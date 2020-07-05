@@ -30,14 +30,14 @@
 
 - name: automatically reboot if needed
   lineinfile: dest=/etc/apt/apt.conf.d/50unattended-upgrades
-              regexp="Unattended-Upgrade::Automatic-Reboot"
+              regexp="^Unattended-Upgrade::Automatic-Reboot\s*\"true\";"
               line="Unattended-Upgrade::Automatic-Reboot \"true\";"
               state=present
               create=yes
 
 - name: specify time of automatic reboot
   lineinfile: dest=/etc/apt/apt.conf.d/50unattended-upgrades
-              regexp="Unattended-Upgrade::Automatic-Reboot-Time"
+              regexp="^Unattended-Upgrade::Automatic-Reboot-Time\s.*\""
               line="Unattended-Upgrade::Automatic-Reboot-Time \"04:10\";"
               state=present
               create=yes
