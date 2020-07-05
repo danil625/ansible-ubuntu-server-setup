@@ -20,6 +20,20 @@
               state=present
               create=yes
 
+- name: automatically reboot if needed
+  lineinfile: dest=/etc/apt/apt.conf.d/50unattended-upgrades
+              regexp="Unattended-Upgrade::Automatic-Reboot"
+              line="Unattended-Upgrade::Automatic-Reboot \"true\";"
+              state=present
+              create=yes
+
+- name: specify time of automatic reboot
+  lineinfile: dest=/etc/apt/apt.conf.d/50unattended-upgrades
+              regexp="Unattended-Upgrade::Automatic-Reboot-Time"
+              line="Unattended-Upgrade::Automatic-Reboot-Time \"04:10\";"
+              state=present
+              create=yes
+
 - name: ufw allow ssh traffic
   ufw: rule=allow port={{ ssh_port|string }} proto=tcp
 
