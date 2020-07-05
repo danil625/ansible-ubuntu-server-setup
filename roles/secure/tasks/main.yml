@@ -9,6 +9,14 @@
       - ufw
       - fail2ban
       - unattended-upgrades
+      - mc
+      - htop
+      - screen
+      - tmux
+      - lynx
+      - tcpdump
+      - git
+      - ncdu
 
 - name: set up unattended upgrades
   copy: src=apt_periodic dest=/etc/apt/apt.conf.d/10periodic
